@@ -11,6 +11,12 @@ editor_options:
 #| include: false
 
 library(reticulate)
+use_virtualenv(
+  file.path(
+    here::here()
+    , ".venv"
+  )
+)
 
 knitr::opts_knit$set(
   root.dir = '~/Documents/repos/github/adventofcode'
@@ -36,7 +42,6 @@ head(txt, n = 12L)
 
 #### R
 
-
 ```{r}
 l = gregexpr("[[:digit:]]", text = txt) |> 
   lapply(FUN = range) 
@@ -61,6 +66,12 @@ mapply(
 #### Python
 
 ```{python}
+def getdigits(x: str):
+  digit = [i for i in x if i.isdigit()]
+  digit = digit[0] + digit[-1]
+  return int(digit)
+
+sum([getdigits(i) for i in r.txt])
 ```
 
 :::
@@ -126,6 +137,31 @@ mapply(
 #### Python
 
 ```{python}
+fromto = {
+  'one': 'o1e'
+  , 'two': 't2o'
+  , 'three': 't3ree'
+  , 'four': 'f4ur'
+  , 'five': 'f5ve'
+  , 'six': 's6x'
+  , 'seven': 's7ven'
+  , 'eight': 'e8ght'
+  , 'nine': 'n9ne'
+}
+
+def digitstring2digit(x: str, dic: dict):
+  for i, k in enumerate(dic):
+    x = x.replace(k, dic[k])
+  return x
+
+def getdigits(x: str):
+  digit = [i for i in x if i.isdigit()]
+  digit = digit[0] + digit[-1]
+  return int(digit)
+
+txt_digits = [digitstring2digit(i, fromto) for i in r.txt]    
+
+sum([getdigits(i) for i in txt_digits])
 ```
 
 :::

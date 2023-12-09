@@ -1,6 +1,6 @@
 ---
-title: "Advent of code 2023, Day X"
-author: ""
+title: "Advent of code 2023, Day 2"
+author: "Hendrik Wagenseil"
 format: html
 editor_options: 
   chunk_output_type: console
@@ -23,11 +23,15 @@ knitr::opts_knit$set(
   root.dir = '~/Documents/repos/github/adventofcode'
 )
 
-y = ""
-d = ""
+y = "2023"
+d = "02"
 
 ifl = file.path(here::here(), y, "data", paste0("day", d, "input"))
 txt = readLines(ifl)
+```
+
+```{r}
+head(txt)
 ```
 
 
@@ -35,11 +39,61 @@ txt = readLines(ifl)
 
 ## Part I
 
+Identify the games that are possible if the bag contained 
+
+* 12 red cubes
+* 13 green cubes
+* 14 blue cubes
+
+Submit the sum of the ids.
+
 ::: {.panel-tabset}
 
 #### R
 
 ```{r}
+
+getcubes = function(
+    x
+    , colors = c("red", "green", "blue")
+){
+  
+  vapply(
+    colors
+    , FUN = \(c){
+      v = grep(c, x = x, value = TRUE)
+      v = gsub(c, replacement = "", x = v)
+      v = trimws(v)
+      max(0L, as.integer(v))
+    }
+    , FUN.VALUE = integer(1L)
+  )
+  
+}  
+
+txt = gsub("^.*?:", "", txt) 
+
+spl = lapply(
+  txt
+  , FUN = strsplit
+  , split = ";|,"
+) |> 
+  lapply("[[", 1)
+
+cnt = Map(
+  getcubes
+  , x = spl
+)
+
+lapply(
+  cnt
+  , FUN = \(i){
+    all(i <= c(12, 13, 14))
+  }
+) |> 
+  unlist() |> 
+  which() |> 
+  sum()
 ```
 
 #### Python
@@ -52,12 +106,19 @@ txt = readLines(ifl)
 
 ## Part II
 
+Submit the power of the minimum set of cubes required to play each game. 
 
 ::: {.panel-tabset}
 
 #### R
 
 ```{r}
+Map(
+  prod
+  , ... = cnt
+) |>
+  unlist() |> 
+  sum()
 ```
 
 #### Python

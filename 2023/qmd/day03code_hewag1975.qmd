@@ -49,8 +49,75 @@ Sum up numbers next to a symbol.
 dig = gsub("[^[:digit:]]", replacement = ".", x = txt)
 sym = gsub("[[:digit:]]", replacement = ".", x = txt)
 sym = gsub("[^\\.]", replacement = "*", x = sym) 
+
 head(dig)
 head(sym)
+
+for (i in seq_along(sym)){
+  for (j in 1:nchar(sym[1])){
+    i = 2
+    j = 1
+    idx = gregexpr("\\*", text = sym[i])[[1]]
+    idx = as.integer(idx)
+    idx = c(idx -1L, idx, idx + 1L)
+    
+    sub = strsplit(dig[i], "")[[1]]
+    sub[idx] = gsub("\\.", "*", sub[idx])
+    
+    if (i > 1) {
+      sub = strsplit(dig[i-1L], "")[[1]]
+      sub[idx] = gsub("\\.", "*", sub[idx])
+    }
+    
+    for (k in -1:1){
+      
+    }
+  }
+}
+
+gregexpr("[[:digit:]]", dig[1:2])
+gregexpr("[^\\.]", sym[1:2])
+
+
+
+m = Map(
+  strsplit
+  , x = dig
+  , split =""
+) |> 
+  lapply(FUN = "[[", 1) |> 
+  lapply(FUN = as.integer) |> 
+  unname() |> 
+  unlist() |> 
+  matrix(ncol = 140, byrow = T)
+
+m[1,]
+dig[1]
+
+
+idx = gregexec("\\*", sym) |> 
+  lapply(FUN = as.numeric)
+
+
+
+
+m = matrix(
+  rep(0L, times = length(sym) * nchar(sym[1]))
+  , nrow = length(sym)
+)
+
+regexec("\\*", text = sym[2])
+gregexec("\\*", text = sym[2])
+
+lapply(
+  sym
+  seq_along(sym)
+  , FUN = \(i){
+    m[i, grep("*", x = sym[i])] = 1L
+  }
+)
+
+
 ```
 
 #### Python

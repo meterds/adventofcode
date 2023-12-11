@@ -1,0 +1,81 @@
+---
+title: "Advent of code 2023, Day 04"
+author: "Hendrik Wagenseil"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(reticulate)
+
+use_virtualenv(
+  file.path(
+    here::here()
+    , ".venv"
+  )
+)
+
+knitr::opts_knit$set(
+  root.dir = '~/Documents/repos/github/adventofcode'
+)
+
+y = "2023"
+d = "04"
+
+ifl = file.path(here::here(), y, "data", paste0("day", d, "input"))
+txt = readLines(ifl)
+```
+
+```{r}
+head(txt)
+```
+
+
+::: {.panel-tabset}
+
+## Part I
+
+Count the number of winning cards. 
+
+::: {.panel-tabset}
+
+#### R
+
+```{r}
+
+
+
+
+
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+
+## Part II
+
+
+::: {.panel-tabset}
+
+#### R
+
+```{r}
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+:::

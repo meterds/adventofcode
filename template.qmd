@@ -1,6 +1,6 @@
 ---
 title: "Advent of code 2023, Day X"
-author: ""
+author: "Hendrik Wagenseil (HW), Tim Appelhans (TA)"
 format: html
 editor_options: 
   chunk_output_type: console

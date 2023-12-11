@@ -1,6 +1,6 @@
 ---
 title: "Advent of code 2023, Day 1"
-author: "Hendrik Wagenseil"
+author: "Hendrik Wagenseil (HW), Tim Appelhans (TA)"
 format: html
 editor_options: 
   chunk_output_type: console
@@ -22,7 +22,10 @@ knitr::opts_knit$set(
   root.dir = '~/Documents/repos/github/adventofcode'
 )
 
-ifl = file.path(here::here(), "2023", "data", "day01input")
+y = "2023"
+d = "01"
+
+ifl = file.path(here::here(), y, "data", paste0("day", d, "input"))
 txt = readLines(ifl)
 ```
 
@@ -40,7 +43,7 @@ head(txt, n = 12L)
 
 ::: {.panel-tabset}
 
-#### R
+#### R (HW)
 
 ```{r}
 l = gregexpr("[[:digit:]]", text = txt) |> 
@@ -63,7 +66,9 @@ mapply(
   sum(na.rm = TRUE)
 ```
 
-#### Python
+#### R (TA)
+
+#### Python (HW)
 
 ```{python}
 def getdigits(x: str):
@@ -88,7 +93,7 @@ head(txt, n = 12L)
 
 ::: {.panel-tabset}
 
-#### R
+#### R (HW)
 
 ```{r}
 pat = c(
@@ -134,7 +139,7 @@ mapply(
   sum(na.rm = TRUE)
 ```
 
-#### Python
+#### Python (HW)
 
 ```{python}
 fromto = {

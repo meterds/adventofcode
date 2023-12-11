@@ -39,7 +39,11 @@ head(txt)
 
 ## Part I
 
-Count the number of winning cards. 
+Count the number of winning cards $w$ and return a score $s$, defined as 
+$$s=\begin{cases}
+0, \text{ if } w = 0 \\
+2^{w-1}, \text{ if } w > 0 
+\end{cases}$$
 
 ::: {.panel-tabset}
 

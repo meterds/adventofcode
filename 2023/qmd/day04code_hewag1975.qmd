@@ -1,6 +1,6 @@
 ---
 title: "Advent of code 2023, Day 04"
-author: "Hendrik Wagenseil"
+author: "Hendrik Wagenseil (HW), Tim Appelhans (TA)"
 format: html
 editor_options: 
   chunk_output_type: console
@@ -43,14 +43,37 @@ Count the number of winning cards.
 
 ::: {.panel-tabset}
 
-#### R
+#### R (HW)
 
 ```{r}
 
+score = function(x){
+  
+  spl = strsplit(x, split = "\\|")[[1]]
+  pairs = lapply(
+    1:2
+    , FUN = \(i){
+      strsplit(spl[i], split = " ")[[1]] |> 
+        as.integer() |> 
+        na.omit()
+    }
+  )
+  
+  wins = sum(pairs[[2]] %in% pairs[[1]])
+  if (wins > 0) return(2^(wins - 1L))
+  else return(0)
+  
+}
 
+txt = gsub("^.*?:", "", txt) 
 
-
-
+Map(
+  score
+  , x = txt
+) |> 
+  unname() |> 
+  unlist() |> 
+  sum()
 ```
 
 #### Python

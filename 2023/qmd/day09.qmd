@@ -1,0 +1,109 @@
+---
+title: "Advent of code 2023, Day 09"
+author: "Hendrik Wagenseil (HW), Tim Appelhans (TA)"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(reticulate)
+
+use_virtualenv(
+  file.path(
+    here::here()
+    , ".venv"
+  )
+)
+
+knitr::opts_knit$set(
+  root.dir = '~/Documents/repos/github/adventofcode'
+)
+
+y = "2023"
+d = "09"
+
+ifl = file.path(here::here(), y, "data", paste0("day", d, "input"))
+txt = readLines(ifl)
+```
+
+```{r}
+head(txt)
+```
+
+
+::: {.panel-tabset}
+
+## Part I
+
+Continue series of numbers by differencing. Add one more element and submit sum 
+of these extrapolated values.
+
+::: {.panel-tabset}
+
+#### R (HW)
+
+```{r}
+
+lapply(
+  txt
+  , FUN = \(i){
+    # i = txt[1]
+    l = strsplit(i, split = " ")[[1]] |> 
+      as.integer() |> 
+      list()
+    
+    while (sum(abs(l[[1]])) > 0L){
+      l = c(list(diff(l[[1]])), l)
+    }
+
+    incr = integer(length(l))
+    incr[1] = 0
+    
+    for (k in seq_along(l)){
+      l[[k]] = c(l[[k]], l[[k]][length(l[[k]])] + incr[k])
+      incr[k + 1] = l[[k]][length(l[[k]])]
+    }
+    
+    l[[length(l)]][length(l[[length(l)]])]
+     
+  }
+  
+) |> 
+  unlist() |> 
+  sum()
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+
+## Part II
+
+Add $m$ successive cards where $m$ is the number of matches in a card.
+Get the final number of cards.
+
+::: {.panel-tabset}
+
+#### R
+
+```{r}
+
+
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+:::

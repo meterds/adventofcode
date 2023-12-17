@@ -1,0 +1,144 @@
+---
+title: "Advent of code 2023, Day 16"
+author: "Hendrik Wagenseil (HW), Tim Appelhans (TA)"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(reticulate)
+
+use_virtualenv(
+  file.path(
+    here::here()
+    , ".venv"
+  )
+)
+
+knitr::opts_knit$set(
+  root.dir = '~/Documents/repos/github/adventofcode'
+)
+
+y = "2023"
+d = "16"
+
+ifl = file.path(here::here(), y, "data", paste0("day", d, "input"))
+txt = readLines(ifl)
+```
+
+```{r}
+head(txt)
+```
+
+
+::: {.panel-tabset}
+
+## Part I
+
+Determine number of energized cells.
+
+::: {.panel-tabset}
+
+#### R (HW)
+
+```{r}
+
+# txt |> sapply(nchar) |> unname()
+# gsub("\\\\", "%%", x = txt) |> sapply(nchar) |> unname()
+
+getcell = function(
+    row
+    , col
+    , lines = txt
+){
+  
+  if (!(row %in% 1:length(txt) & col %in% 1:nchar(lines[1]))){
+    s = NA_character_
+  } else {
+    s = substr(lines[row], start = col, stop = col)
+  }
+
+  return(s)
+    
+}
+
+getcell(0, 1)
+getcell(5, 1120)
+getcell(1, 1)
+getcell(1, 2)
+getcell(1, 10)
+
+
+nextcells = function(
+    x
+    , y
+    , x_symbol
+    , y_symbol
+    , type = c(".", "/", "\\", "|", "-")
+){
+  
+  type = match.arg(type)
+  dx = diff(c(x, x_symbol))
+  dy = diff(c(y, y_symbol))
+  
+  if (type == "."){
+    xy_next = c(x_symbol + dx, y_symbol + dy)
+  }
+  
+  if (type == "-" ){
+    xy_next = c(
+      x_symbol 
+      , y_symbol
+    )
+  }
+  
+  return(
+    list(
+      xy_active = c(x_symbol, y_symbol)
+      , xy_next = xy_next
+    )
+  )
+  
+}
+
+nextcells(1, 10, 2, 10)
+nextcells(3, 10, 2, 10)
+nextcells(3, 10, 3, 9)
+
+
+
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+
+## Part II
+
+Add $m$ successive cards where $m$ is the number of matches in a card.
+Get the final number of cards.
+
+::: {.panel-tabset}
+
+#### R
+
+```{r}
+
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+:::

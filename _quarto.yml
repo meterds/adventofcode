@@ -10,15 +10,14 @@ execute:
 format:
   html:
     css: styles.css
-    theme:
-      light: cosmo
+    theme: slate
     code-copy: true
 
 website:
   title: Advent of code
   sidebar:
     background: primary
-    search: true
+    search: false
     style: docked
     tools:
       - icon: github

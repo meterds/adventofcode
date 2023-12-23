@@ -1,5 +1,5 @@
 ---
-title: "Advent of code 2023, Day 07"
+title: "Day 07"
 author: "Hendrik Wagenseil (HW), Tim Appelhans (TA)"
 format: html
 editor_options: 

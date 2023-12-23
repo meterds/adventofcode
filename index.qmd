@@ -5,4 +5,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-Blabla
+Solutions to [Advent of code](https://adventofcode.com/) by [Eric Wastl](http://was.tl/). 
+
+<iframe src="https://giphy.com/embed/DoAhHAfGcfeco" width="720" height="408" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/snow-winter-cozy-DoAhHAfGcfeco">via GIPHY</a></p>

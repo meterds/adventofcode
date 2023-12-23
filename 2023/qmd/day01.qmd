@@ -21,14 +21,19 @@ use_virtualenv(
 knitr::opts_knit$set(
   root.dir = '~/Documents/repos/github/adventofcode'
 )
+```
 
+Dataset: 
+
+```{r}
 y = "2023"
 d = "01"
 
 ifl = file.path(here::here(), y, "data", paste0("day", d, "input"))
 txt = readLines(ifl)
-```
 
+head(txt, n = 12L)
+```
 
 ::: {.panel-tabset}
 
@@ -36,10 +41,6 @@ txt = readLines(ifl)
 
 Extract first and last digit from each element of a vector of strings and 
 sum up. 
-
-```{r}
-head(txt, n = 12L)
-```
 
 ::: {.panel-tabset}
 
@@ -66,8 +67,6 @@ mapply(
   sum(na.rm = TRUE)
 ```
 
-#### R (TA)
-
 #### Python (HW)
 
 ```{python}
@@ -86,10 +85,6 @@ sum([getdigits(i) for i in r.txt])
 
 Extract first and last digit and/or first and last written number from each 
 element of a vector of strings and sum up. 
-
-```{r}
-head(txt, n = 12L)
-```
 
 ::: {.panel-tabset}
 

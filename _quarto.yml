@@ -19,11 +19,13 @@ website:
   sidebar:
     background: primary
     search: true
+    style: docked
     tools:
       - icon: github
         href: https://github.com/meterds/adventofcode
     contents:
-      - about.qmd
+      - text: "Welcome"
+        file: index.qmd
       - section: "2020"
       - section: "2021"
       - section: "2022"

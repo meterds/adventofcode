@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+
+execute:
+  freeze: true
+
+format:
+  html:
+    css: styles.css
+    theme:
+      light: cosmo
+    code-copy: true
+
+website:
+  title: Advent of code
+  sidebar:
+    background: primary
+    search: true
+    tools:
+      - icon: github
+        href: https://github.com/meterds/adventofcode
+    contents:
+      - about.qmd
+      - section: "2020"
+      - section: "2021"
+      - section: "2022"
+      - section: "2023"
+        contents: 2023/qmd/*

@@ -46,6 +46,8 @@ Sum up numbers next to a symbol.
 #### R
 
 ```{r}
+#| eval: false
+
 dig = gsub("[^[:digit:]]", replacement = ".", x = txt)
 sym = gsub("[[:digit:]]", replacement = ".", x = txt)
 sym = gsub("[^\\.]", replacement = "*", x = sym) 
@@ -78,8 +80,6 @@ for (i in seq_along(sym)){
 gregexpr("[[:digit:]]", dig[1:2])
 gregexpr("[^\\.]", sym[1:2])
 
-
-
 m = Map(
   strsplit
   , x = dig
@@ -94,12 +94,8 @@ m = Map(
 m[1,]
 dig[1]
 
-
 idx = gregexec("\\*", sym) |> 
   lapply(FUN = as.numeric)
-
-
-
 
 m = matrix(
   rep(0L, times = length(sym) * nchar(sym[1]))

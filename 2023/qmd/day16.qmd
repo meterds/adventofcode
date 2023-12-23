@@ -46,7 +46,7 @@ Determine number of energized cells.
 #### R (HW)
 
 ```{r}
-
+#| eval: false
 # txt |> sapply(nchar) |> unname()
 # gsub("\\\\", "%%", x = txt) |> sapply(nchar) |> unname()
 

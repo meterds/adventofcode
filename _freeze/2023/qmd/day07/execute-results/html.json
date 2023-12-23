@@ -1,0 +1,16 @@
+{
+  "hash": "de656fac6fcf1f16545d65d38460fbcb",
+  "result": {
+    "markdown": "---\ntitle: \"Advent of code 2023, Day 07\"\nauthor: \"Hendrik Wagenseil (HW), Tim Appelhans (TA)\"\nformat: html\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n\n\n::: {.panel-tabset}\n\n## Part I\n\nRank hands of cards and get the total winnings (bid * rank). \n\n\n::: {.cell}\n\n```{.r .cell-code}\nhead(txt, n = 12L)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n [1] \"9A35J 469\" \"75T32 237\" \"6T8JQ 427\" \"3366A 814\" \"K2AK9 982\" \"J8KTT 9\"  \n [7] \"94936 970\" \"Q8AK9 15\"  \"3QQ32 940\" \"65555 484\" \"8K88K 674\" \"Q67T5 788\"\n```\n:::\n:::\n\n\n::: {.panel-tabset}\n\n#### R (HW)\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntypes = c(\n  \"11111\" = \"1_highcard\"\n  , \"1112\" = \"2_onepair\"\n  , \"122\" = \"3_twopair\"\n  , \"113\" = \"4_threeofakind\"\n  , \"23\" = \"5_fullhouse\"\n  , \"14\" = \"6_fourofakind\"\n  , \"5\" = \"7_fiveofakind\"\n)\n\nvalues = c(\n  \"A\" = 14\n  , \"K\" = 13\n  , \"Q\" = 12\n  , \"J\" = 11\n  , \"T\" = 10\n  , \"9\" = 9\n  , \"8\" = 8\n  , \"7\" = 7\n  , \"6\" = 6\n  , \"5\" = 5\n  , \"4\" = 4\n  , \"3\" = 3\n  , \"2\" = 2\n)\n\nhandtable = function(x){\n  table(x) |> \n    sort() |> \n    paste(collapse = \"\")\n}\n\nhandtype = function(x, typ = types){\n  \n  h = strsplit(x, split = \"\")\n  h = Map(\n    handtable\n    , x = h\n  ) |> \n    unlist()\n  \n  typ[\n    match(\n      h\n      , table = names(typ)\n    )\n  ] |> \n    unname()\n  \n}\n\nsecondorder = function(x, val = values){\n  \n  h = strsplit(x, split = \"\")\n  h = lapply(\n    h\n    , FUN = \\(i) {\n      unname(\n        val[\n          match(\n            i\n            , table = names(val)\n          )\n        ]\n      )\n    }\n  )\n  \n  lapply(\n    h\n    , FUN = \\(i) {\n      as.numeric(\n        (i / 10) %*% c(100000000, 1000000, 10000, 100, 1)\n      )\n    }\n  ) |> \n    unlist()\n  \n}\n\ndata = data.table(\n  txt = txt\n)\n\ndata[, hand := tstrsplit(txt, split = \" \", keep = 1L)]\ndata[, score := tstrsplit(txt, split = \" \", keep = 2L)]\ndata[, score := as.integer(score)]\ndata[, type := handtype(hand)]\ndata[, sorder := secondorder(hand)]\n\nsetorder(data, type, sorder)\n\ndata[, rank := .I]\ndata[, bid := rank * score]\nsum(data$bid)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 250120186\n```\n:::\n:::\n\n\n#### R (TA)\n\n#### Python (HW)\n\n\n::: {.cell}\n\n:::\n\n\n:::\n\n\n## Part II\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nhead(txt, n = 12L)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n [1] \"9A35J 469\" \"75T32 237\" \"6T8JQ 427\" \"3366A 814\" \"K2AK9 982\" \"J8KTT 9\"  \n [7] \"94936 970\" \"Q8AK9 15\"  \"3QQ32 940\" \"65555 484\" \"8K88K 674\" \"Q67T5 788\"\n```\n:::\n:::\n\n\n::: {.panel-tabset}\n\n#### R (HW)\n\n\n::: {.cell}\n\n:::\n\n\n#### Python (HW)\n\n\n::: {.cell}\n\n:::\n\n\n:::\n\n:::\n",
+    "supporting": [
+      "day07_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

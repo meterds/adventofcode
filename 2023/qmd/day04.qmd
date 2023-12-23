@@ -97,7 +97,7 @@ Get the final number of cards.
 #### R
 
 ```{r}
-
+#| eval: false
 move = function(
     x
     , deck

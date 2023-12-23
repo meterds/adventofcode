@@ -1,0 +1,16 @@
+{
+  "hash": "37fcad590b41c983085c96ce4966aebf",
+  "result": {
+    "markdown": "---\ntitle: \"Advent of code 2023, Day 09\"\nauthor: \"Hendrik Wagenseil (HW), Tim Appelhans (TA)\"\nformat: html\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nhead(txt)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"13 9 1 2 50 233 728 1871 4300 9258 19218 39107 78571 155948 304911 585118 1098671 2014751 3605471 6296784 10739208\"       \n[2] \"16 39 84 173 354 719 1433 2795 5379 10350 20134 39782 79679 160823 324893 652941 1299026 2548741 4917680 9311783 17280520\"\n[3] \"0 14 39 74 117 165 221 322 616 1545 4242 11327 28389 66554 146616 305124 602288 1130037 2015139 3405883 5420809\"          \n[4] \"6 14 26 55 130 298 626 1203 2142 3582 5690 8663 12730 18154 25234 34307 45750 59982 77466 98711 124274\"                   \n[5] \"15 27 57 112 193 306 501 952 2094 4836 10868 23071 46018 86517 154090 261201 422937 655705 974331 1386730 1885055\"        \n[6] \"4 12 28 52 84 124 172 228 292 364 444 532 628 732 844 964 1092 1228 1372 1524 1684\"                                       \n```\n:::\n:::\n\n\n\n::: {.panel-tabset}\n\n## Part I\n\nContinue series of numbers by differencing. Add one more element and submit sum \nof these extrapolated values.\n\n::: {.panel-tabset}\n\n#### R (HW)\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlapply(\n  txt\n  , FUN = \\(i){\n    # i = txt[1]\n    l = strsplit(i, split = \" \")[[1]] |> \n      as.integer() |> \n      list()\n    \n    while (sum(abs(l[[1]])) > 0L){\n      l = c(list(diff(l[[1]])), l)\n    }\n\n    incr = integer(length(l))\n    incr[1] = 0\n    \n    for (k in seq_along(l)){\n      l[[k]] = c(l[[k]], l[[k]][length(l[[k]])] + incr[k])\n      incr[k + 1] = l[[k]][length(l[[k]])]\n    }\n    \n    l[[length(l)]][length(l[[length(l)]])]\n     \n  }\n  \n) |> \n  unlist() |> \n  sum()\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 1987402313\n```\n:::\n:::\n\n\n#### Python\n\n\n::: {.cell}\n\n:::\n\n\n:::\n\n\n## Part II\n\nAdd $m$ successive cards where $m$ is the number of matches in a card.\nGet the final number of cards.\n\n::: {.panel-tabset}\n\n#### R\n\n\n::: {.cell}\n\n:::\n\n\n#### Python\n\n\n::: {.cell}\n\n:::\n\n\n:::\n\n:::\n",
+    "supporting": [
+      "day09_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

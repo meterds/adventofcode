@@ -43,11 +43,10 @@ txt = readLines(ifl)
 head(txt, n = 12L)
 ```
 
-::: {.panel-tabset}
-
 ## Part I
 
-For each element in the given vector of characters do:
+For each element in the given vector of characters do:  
+
 * extract the first and the last digit 
 * concatenate to a new number
 * calculate the sum  
@@ -56,7 +55,8 @@ For each element in the given vector of characters do:
 
 #### R 
 
-Approach:
+Approach:  
+
 * get indices of all digits per element using `gregexpr`
 * get the first and last digit using `range`
 * extract the first and last digits using `substtr`
@@ -85,7 +85,8 @@ mapply(
 
 #### Python 
 
-Approach:
+Approach:  
+
 * extract all digits from a string using list comprehension
 * get the first and last digit by index and concatenate
 * calculate the sum
@@ -106,14 +107,13 @@ sum([getdigits(i) for i in r.txt])
 
 The task is the same as in part I, but in addition to digits, also written 
 numbers (one, two, three, ...) shall be considered.
-Extract first and last digit and/or first and last written number from each 
-element of a vector of strings and sum up. 
 
 ::: {.panel-tabset}
 
 #### R 
 
-Approach:
+Approach:  
+
 * replace the second character of any written numbers with their digit (e.g. 
 `one` -> `o1e`, `two` -> `t2o`, ...) 
 * replacing the entire string would cause issues in case of adjacent written 
@@ -187,7 +187,5 @@ txt_digits = [digitstring2digit(i, fromto) for i in r.txt]
 
 sum([getdigits(i) for i in txt_digits])
 ```
-
-:::
 
 :::

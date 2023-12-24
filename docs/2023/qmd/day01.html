@@ -257,16 +257,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [11] "mhcvqmsg7bdj"                      "seven67"                          </code></pre>
 </div>
 </div>
+</section>
+<section id="part-i" class="level2">
+<h2 class="anchored" data-anchor-id="part-i">Part I</h2>
+<p>For each element in the given vector of characters do:</p>
+<ul>
+<li>extract the first and the last digit</li>
+<li>concatenate to a new number</li>
+<li>calculate the sum</li>
+</ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" aria-current="page">Part I</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Part II</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<p>For each element in the given vector of characters do: * extract the first and the last digit * concatenate to a new number * calculate the sum</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>Approach: * get indices of all digits per element using <code>gregexpr</code> * get the first and last digit using <code>range</code> * extract the first and last digits using <code>substtr</code> * create the new number and calculate the sum</p>
+<p>Approach:</p>
+<ul>
+<li>get indices of all digits per element using <code>gregexpr</code></li>
+<li>get the first and last digit using <code>range</code></li>
+<li>extract the first and last digits using <code>substtr</code></li>
+<li>create the new number and calculate the sum</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">gregexpr</span>(<span class="st">"[[:digit:]]"</span>, <span class="at">text =</span> txt) <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(<span class="at">FUN =</span> range) </span>
@@ -292,7 +302,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>Approach: * extract all digits from a string using list comprehension * get the first and last digit by index and concatenate * calculate the sum</p>
+<p>Approach:</p>
+<ul>
+<li>extract all digits from a string using list comprehension</li>
+<li>get the first and last digit by index and concatenate</li>
+<li>calculate the sum</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> getdigits(x: <span class="bu">str</span>):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  digit <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> x <span class="cf">if</span> i.isdigit()]</span>
@@ -307,14 +322,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<p>The task is the same as in part I, but in addition to digits, also written numbers (one, two, three, …) shall be considered. Extract first and last digit and/or first and last written number from each element of a vector of strings and sum up.</p>
+</section>
+<section id="part-ii" class="level2">
+<h2 class="anchored" data-anchor-id="part-ii">Part II</h2>
+<p>The task is the same as in part I, but in addition to digits, also written numbers (one, two, three, …) shall be considered.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>Approach: * replace the second character of any written numbers with their digit (e.g.&nbsp; <code>one</code> -&gt; <code>o1e</code>, <code>two</code> -&gt; <code>t2o</code>, …) * replacing the entire string would cause issues in case of adjacent written numbers like <code>oneight</code>, <code>sevenine</code> * apply the approach from part I</p>
+<p>Approach:</p>
+<ul>
+<li>replace the second character of any written numbers with their digit (e.g.&nbsp; <code>one</code> -&gt; <code>o1e</code>, <code>two</code> -&gt; <code>t2o</code>, …)</li>
+<li>replacing the entire string would cause issues in case of adjacent written numbers like <code>oneight</code>, <code>sevenine</code></li>
+<li>apply the approach from part I</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fromto <span class="ot">=</span> <span class="fu">c</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'one'</span> <span class="ot">=</span> <span class="st">'o1e'</span></span>
@@ -385,9 +406,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>([getdigits(i) <span class="cf">for</span> i <span class="kw">in</span> txt_digits])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>54078</code></pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

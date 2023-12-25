@@ -28,6 +28,8 @@ knitr::opts_knit$set(
 Load and preview the data set. 
 
 ```{r}
+#| label: data-load
+
 y = "2023"
 d = "01"
 

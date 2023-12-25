@@ -22,38 +22,71 @@ use_virtualenv(
 knitr::opts_knit$set(
   root.dir = '~/Documents/repos/github/adventofcode'
 )
+```
+
+## Data 
+
+Load and preview the data set. 
+
+```{r}
+#| label: data-load
 
 y = "2023"
 d = "02"
 
-ifl = file.path(here::here(), y, "data", paste0("day", d, "input"))
-txt = readLines(ifl)
-```
+ifl = file.path(
+  here::here()
+  , y
+  , "data"
+  , paste0("day", d, "input")
+)
 
-```{r}
+txt = readLines(ifl)
 head(txt)
 ```
 
-
-::: {.panel-tabset}
-
 ## Part I
 
-Identify the games that are possible if the bag contained 
+Colored cubes (red, green, blue) are drawn from a bag with replacement. Several 
+iterations compose a game. The task is to identify all games being possible if 
+the bag contained 
 
 * 12 red cubes
 * 13 green cubes
 * 14 blue cubes
 
-Submit the sum of the ids.
+The solution is the sum of the ids of these games.
+
+Overall, the iterations per game do not matter here. The problem simplifies to 
+identify games where the number of cubes drawn in a particular color exceeds 
+the given amount of cubes in this color.
 
 ::: {.panel-tabset}
 
 #### R
 
-```{r}
+Approach:
 
-getcubes = function(
+* replace the prefix "Game X: " from every vector element as the game id is 
+equal to the index
+* split the game into single cubes 
+* get the maximum number of cubes per colors and per game
+* identify games where the maximum number of cubes in at least one color 
+exceeds the given amount of cubes
+
+```{r}
+splitgame = function(
+    x
+){
+
+  x = gsub("^.*?:", replacement = "", x = x)
+  unlist(
+    strsplit(x, split = ";|,")
+  )
+  
+}
+
+maxcubes = function(
     x
     , colors = c("red", "green", "blue")
 ){
@@ -71,34 +104,52 @@ getcubes = function(
   
 }  
 
-txt = gsub("^.*?:", "", txt) 
-
-spl = lapply(
-  txt
-  , FUN = strsplit
-  , split = ";|,"
+games = Map(
+  splitgame
+  , x = txt
 ) |> 
-  lapply("[[", 1)
+  unname()
 
-cnt = Map(
-  getcubes
-  , x = spl
+cubes = Map(
+  maxcubes
+  , x = games
 )
 
-lapply(
-  cnt
+possible = lapply(
+  cubes
   , FUN = \(i){
     all(i <= c(12, 13, 14))
   }
 ) |> 
-  unlist() |> 
-  which() |> 
-  sum()
+  unlist() 
+
+sum(which(possible))
 ```
 
 #### Python
 
 ```{python}
+import re
+import numpy as np
+
+def maxcubes(x: str):
+  x = re.split(',|;|:', x)[1:]
+  cbs = []
+  for col in ['red', 'green', 'blue']:
+    c = [int(g.replace(col, '')) for g in x if col in g]
+    cbs.append(max(c))
+  return cbs  
+
+cubes = map(maxcubes, r.txt)
+cubes = list(cubes)
+cubes = np.array(cubes)
+
+idx = 0
+for i, x in enumerate(cubes):
+  if all(cubes[i] <= np.array([12, 13, 14])):
+    idx += i + 1
+  
+idx
 ```
 
 :::
@@ -115,7 +166,7 @@ Submit the power of the minimum set of cubes required to play each game.
 ```{r}
 Map(
   prod
-  , ... = cnt
+  , ... = cubes
 ) |>
   unlist() |> 
   sum()
@@ -125,7 +176,5 @@ Map(
 
 ```{python}
 ```
-
-:::
 
 :::

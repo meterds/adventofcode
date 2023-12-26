@@ -128,6 +128,13 @@ sum(which(possible))
 
 #### Python
 
+Approach:
+
+* split each game into single cubes, drop prefix "Game X:"
+* get the maximum number of cubes per colors and per game
+* identify games where the maximum number of cubes in at least one color 
+exceeds the given amount of cubes
+
 ```{python}
 import re
 import numpy as np
@@ -157,24 +164,42 @@ idx
 
 ## Part II
 
-Submit the power of the minimum set of cubes required to play each game. 
+Per game, determine the minimum number of cubes per color required to play that 
+game. Calculate the power of the game, i.e. multiply the numbers of the 
+minimum set. 
 
 ::: {.panel-tabset}
 
 #### R
 
+Approach:
+
+* interim step of part I was a list containing the maximum number of cubes per 
+color in a given game
+* per game, multiply the elements per game and calculate the sum 
+
 ```{r}
-Map(
+pow = Map(
   prod
   , ... = cubes
 ) |>
-  unlist() |> 
-  sum()
+  unlist() 
+
+sum(pow)
 ```
 
 #### Python
 
+Approach:
+
+* interim step of part I was a numpy array containing the maximum number of 
+cubes per color in a given game
+* calculate the product of the array along dimension 1 (rows) and calculate the 
+sum 
+
 ```{python}
+pow = np.prod(cubes, axis = 1)
+sum(pow)
 ```
 
 :::

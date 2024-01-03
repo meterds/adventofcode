@@ -22,20 +22,28 @@ use_virtualenv(
 knitr::opts_knit$set(
   root.dir = '~/Documents/repos/github/adventofcode'
 )
+```
+
+## Data 
+
+Load and preview the data set. 
+
+```{r}
+#| label: data-load
 
 y = "2023"
 d = "03"
 
-ifl = file.path(here::here(), y, "data", paste0("day", d, "input"))
-txt = readLines(ifl)
-```
+ifl = file.path(
+  here::here()
+  , y
+  , "data"
+  , paste0("day", d, "input")
+)
 
-```{r}
+txt = readLines(ifl)
 head(txt)
 ```
-
-
-::: {.panel-tabset}
 
 ## Part I
 
@@ -138,7 +146,5 @@ lapply(
 
 ```{python}
 ```
-
-:::
 
 :::

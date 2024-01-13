@@ -1,0 +1,94 @@
+---
+title: "2022 - day 01"
+author: "Hendrik Wagenseil"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(reticulate)
+use_virtualenv(
+  file.path(
+    here::here()
+    , ".venv"
+  )
+)
+
+knitr::opts_knit$set(
+  root.dir = '~/Documents/repos/github/adventofcode'
+)
+```
+
+## Data 
+
+Load and preview the data set. 
+
+```{r}
+#| label: data-load
+
+y = "2022"
+d = "01"
+
+ifl = file.path(
+  here::here()
+  , y
+  , "data"
+  , paste0(y, "-day", d, "input")
+)
+
+txt = readLines(ifl)
+head(txt, n = 12L)
+```
+
+## Part I
+
+Aggregate the calories per elv and get the maximum.
+
+::: {.panel-tabset}
+
+#### R 
+
+Approach:  
+
+```{r}
+
+```
+
+#### Python 
+
+Approach:  
+
+
+```{python}
+
+```
+
+:::
+
+
+## Part II
+
+
+::: {.panel-tabset}
+
+#### R 
+
+Approach:  
+
+
+```{r}
+
+```
+
+#### Python 
+
+```{python}
+
+
+```
+
+:::

@@ -1,0 +1,188 @@
+---
+title: "2023 - day 04"
+author: "Hendrik Wagenseil"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(reticulate)
+
+use_virtualenv(
+  file.path(
+    here::here()
+    , ".venv"
+  )
+)
+
+knitr::opts_knit$set(
+  root.dir = '~/Documents/repos/github/adventofcode'
+)
+
+y = "2023"
+d = "04"
+
+ifl = file.path(
+  here::here()
+  , y
+  , "data"
+  , paste0(y, "-day", d, "input")
+)
+
+txt = readLines(ifl)
+head(txt)
+```
+
+```{r}
+head(txt)
+```
+
+
+::: {.panel-tabset}
+
+## Part I
+
+Count the number of winning cards $w$ and return a score $s$, defined as 
+$$s=\begin{cases}
+0, \text{ if } w = 0 \\
+2^{w-1}, \text{ if } w > 0 
+\end{cases}$$
+
+::: {.panel-tabset}
+
+#### R 
+
+```{r}
+
+matches = function(x){
+  
+  spl = strsplit(x, split = "\\|")[[1]]
+  pairs = lapply(
+    1:2
+    , FUN = \(i){
+      strsplit(spl[i], split = " ")[[1]] |> 
+        as.integer() |> 
+        na.omit()
+    }
+  )
+  
+  sum(pairs[[2]] %in% pairs[[1]])
+  
+}
+
+txt = gsub("^.*?:", "", txt) 
+
+m = Map(
+  matches
+  , x = txt
+) |> 
+  unname() |> 
+  unlist() 
+
+sum(2^(m[m>0] -1L))
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+
+## Part II
+
+Add $m$ successive cards where $m$ is the number of matches in a card.
+Get the final number of cards.
+
+::: {.panel-tabset}
+
+#### R
+
+```{r}
+#| eval: false
+move = function(
+    x
+    , deck
+){
+  if (x > 0){
+    idx = as.integer(names(x))
+    from = min(length(deck), idx + 1L)
+    to = min(length(deck), idx + x)
+    deck[from:to]
+  }
+}
+
+play = function(
+    game
+    , deck
+){
+
+  i = 0L
+  
+  # while (length(game) > 0L){
+  #   new = move(game[1L], deck = deck)
+  #   game = c(game[-1L], new)
+  #   i = i + 1L
+  #   print(i)
+  # } 
+  
+  return(i)
+  
+  # if (length(game) > 0L){
+  #   new = move(game[1L], deck = deck)
+  #   game = c(game[-1L], new)
+  #   play(game, deck = deck)
+  # } else {
+  #   return(idx)
+  # }
+    
+}
+
+names(m) = 1:length(m)
+names(deck) = 1:length(m)
+play(m[1], deck = m)
+game = m[1:2]
+
+
+addcards = function(x, org){
+  
+  lapply(
+    1:length(x)
+    , FUN = \(i){
+      i = 1
+      if (x[i] > 0) {
+        idx = as.integer(names(x[i]))
+        org[(idx+1):(idx+org[idx])]
+      }
+    }
+  ) |> 
+    unlist()
+  
+  if (length(x) > 0){
+    return(addcards(x, org = org))
+  } else {
+    return(c(org, x))
+  }
+  
+}
+
+names(m) = 1:length(m)
+org = m
+x = m
+addcards(m, org = m)
+
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+:::

@@ -1,0 +1,200 @@
+---
+title: "2023 - day 16"
+author: "Hendrik Wagenseil"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(reticulate)
+
+use_virtualenv(
+  file.path(
+    here::here()
+    , ".venv"
+  )
+)
+
+knitr::opts_knit$set(
+  root.dir = '~/Documents/repos/github/adventofcode'
+)
+
+y = "2023"
+d = "16"
+
+ifl = file.path(
+  here::here()
+  , y
+  , "data"
+  , paste0(y, "-day", d, "input")
+)
+
+txt = readLines(ifl)
+head(txt)
+```
+
+```{r}
+head(txt)
+```
+
+
+::: {.panel-tabset}
+
+## Part I
+
+Determine number of energized cells.
+
+::: {.panel-tabset}
+
+#### R 
+
+```{r}
+#| eval: false
+# txt |> sapply(nchar) |> unname()
+# gsub("\\\\", "%%", x = txt) |> sapply(nchar) |> unname()
+
+getcell = function(
+    row
+    , col
+    , lines = txt
+){
+  
+  if (!(row %in% 1:length(txt) & col %in% 1:nchar(lines[1]))){
+    s = NA_character_
+  } else {
+    s = substr(lines[row], start = col, stop = col)
+  }
+  
+  return(s)
+  
+}
+
+getcell(0, 1)
+getcell(5, 1120)
+getcell(1, 1)
+getcell(1, 2)
+getcell(1, 10)
+
+
+nextcells = function(
+    x
+    , y
+    , from = c("l", "r", "t", "b")
+){
+  
+  from = match.arg(from)
+  type = getcell(x, col = y)
+  
+  if (type == "."){
+    if (from == "l") n = c(x, y + 1L)
+    else if (from == "r") n = c(x, y - 1L)
+    else if (from == "t") n = c(x + 1L, y)
+    else if (from == "b") n = c(x - 1L, y)
+  } else if (type == "/"){
+    if (from == "l") n = c(x - 1L, y)
+    else if (from == "r") n = c(x + 1L, y)
+    else if (from == "t") n = c(x, y - 1L)
+    else if (from == "b") n = c(x, y + 1L)
+  } else if (type == "\\"){
+    if (from == "l") n = c(x + 1L, y)
+    else if (from == "r") n = c(x - 1L, y)
+    else if (from == "t") n = c(x, y + 1L)
+    else if (from == "b") n = c(x, y - 1L)
+  } else if (type == "-"){
+    if (from == "l") n = c(x, y + 1L)
+    else if (from == "r") n = c(x, y - 1L)
+    else if (from == "t") n = c(x, y + 1L, x, y - 1L)
+    else if (from == "b") n = c(x, y + 1L, x, y - 1L)
+  } else if (type == "|"){
+    if (from == "l") n = c(x + 1L, y, x - 1L, y)
+    else if (from == "r") n = c(x + 1L, y, x - 1L, y)
+    else if (from == "t") n = c(x + 1L, y)
+    else if (from == "b") n = c(x - 1L, y)
+  }
+  
+  n = matrix(n, ncol = 2L, byrow = TRUE)
+  
+  idx = apply(
+    n
+    , MARGIN = 2L
+    , FUN = \(i) which(i == 0)
+  ) |> 
+    unlist()
+  
+  if (length(idx) > 0L) n = n[-idx, , drop = FALSE]
+  return(n)
+  
+}
+
+m = matrix(nrow = 0L, ncol = 2L)
+colnames(m) = c("row", "col")
+
+n = matrix(c(1L, 1L), ncol = 2L, byrow = TRUE)
+colnames(n) = c("row", "col")
+
+while (dim(n)[1] > 0L){
+  
+  m = rbind(m, n)
+  
+  for (i in 1:dim(n)[1]){
+    n = nextcells(n[i, ])
+  }
+  
+}
+rbind(
+  m
+  , nextcells(m[])
+)
+
+txt[1]
+x = 1
+y = 10
+from = "r"
+getcell(x, y)
+
+nextcells(1, y = 1, from = "l")
+nextcells(1, y = 1, from = "r")
+nextcells(1, y = 10, from = "l")
+nextcells(1, y = 10, from = "r")
+nextcells(1, y = 10, from = "b")
+nextcells(1, y = 53, from = "r")
+nextcells(1, y = 53, from = "t")
+nextcells(1, y = 53, from = "b")
+nextcells(1, y = 53, from = "l")
+
+
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+
+## Part II
+
+Add $m$ successive cards where $m$ is the number of matches in a card.
+Get the final number of cards.
+
+::: {.panel-tabset}
+
+#### R
+
+```{r}
+
+```
+
+#### Python
+
+```{python}
+```
+
+:::
+
+:::

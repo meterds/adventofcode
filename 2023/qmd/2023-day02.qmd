@@ -1,0 +1,205 @@
+---
+title: "2023 - day 02"
+author: "Hendrik Wagenseil"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(reticulate)
+
+use_virtualenv(
+  file.path(
+    here::here()
+    , ".venv"
+  )
+)
+
+knitr::opts_knit$set(
+  root.dir = '~/Documents/repos/github/adventofcode'
+)
+```
+
+## Data 
+
+Load and preview the data set. 
+
+```{r}
+#| label: data-load
+
+y = "2023"
+d = "02"
+
+ifl = file.path(
+  here::here()
+  , y
+  , "data"
+  , paste0(y, "-day", d, "input")
+)
+
+txt = readLines(ifl)
+head(txt)
+```
+
+## Part I
+
+Colored cubes (red, green, blue) are drawn from a bag with replacement. Several 
+iterations compose a game. The task is to identify all games being possible if 
+the bag contained 
+
+* 12 red cubes
+* 13 green cubes
+* 14 blue cubes
+
+The solution is the sum of the ids of these games.
+
+Overall, the iterations per game do not matter here. The problem simplifies to 
+identify games where the number of cubes drawn in a particular color exceeds 
+the given amount of cubes in this color.
+
+::: {.panel-tabset}
+
+#### R
+
+Approach:
+
+* replace the prefix "Game X: " from every vector element as the game id is 
+equal to the index
+* split the game into single cubes 
+* get the maximum number of cubes per colors and per game
+* identify games where the maximum number of cubes in at least one color 
+exceeds the given amount of cubes
+
+```{r}
+splitgame = function(
+    x
+){
+
+  x = gsub("^.*?:", replacement = "", x = x)
+  unlist(
+    strsplit(x, split = ";|,")
+  )
+  
+}
+
+maxcubes = function(
+    x
+    , colors = c("red", "green", "blue")
+){
+  
+  vapply(
+    colors
+    , FUN = \(c){
+      v = grep(c, x = x, value = TRUE)
+      v = gsub(c, replacement = "", x = v)
+      v = trimws(v)
+      max(0L, as.integer(v))
+    }
+    , FUN.VALUE = integer(1L)
+  )
+  
+}  
+
+games = Map(
+  splitgame
+  , x = txt
+) |> 
+  unname()
+
+cubes = Map(
+  maxcubes
+  , x = games
+)
+
+possible = lapply(
+  cubes
+  , FUN = \(i){
+    all(i <= c(12, 13, 14))
+  }
+) |> 
+  unlist() 
+
+sum(which(possible))
+```
+
+#### Python
+
+Approach:
+
+* split each game into single cubes, drop prefix "Game X:"
+* get the maximum number of cubes per colors and per game
+* identify games where the maximum number of cubes in at least one color 
+exceeds the given amount of cubes
+
+```{python}
+import re
+import numpy as np
+
+def maxcubes(x: str):
+  x = re.split(',|;|:', x)[1:]
+  cbs = []
+  for col in ['red', 'green', 'blue']:
+    c = [int(g.replace(col, '')) for g in x if col in g]
+    cbs.append(max(c))
+  return cbs  
+
+cubes = map(maxcubes, r.txt)
+cubes = list(cubes)
+cubes = np.array(cubes)
+
+idx = 0
+for i, x in enumerate(cubes):
+  if all(cubes[i] <= np.array([12, 13, 14])):
+    idx += i + 1
+  
+idx
+```
+
+:::
+
+
+## Part II
+
+Per game, determine the minimum number of cubes per color required to play that 
+game. Calculate the power of the game, i.e. multiply the numbers of the 
+minimum set. 
+
+::: {.panel-tabset}
+
+#### R
+
+Approach:
+
+* interim step of part I was a list containing the maximum number of cubes per 
+color in a given game
+* per game, multiply the elements per game and calculate the sum 
+
+```{r}
+pow = Map(
+  prod
+  , ... = cubes
+) |>
+  unlist() 
+
+sum(pow)
+```
+
+#### Python
+
+Approach:
+
+* interim step of part I was a numpy array containing the maximum number of 
+cubes per color in a given game
+* calculate the product of the array along dimension 1 (rows) and calculate the 
+sum 
+
+```{python}
+pow = np.prod(cubes, axis = 1)
+sum(pow)
+```
+
+:::

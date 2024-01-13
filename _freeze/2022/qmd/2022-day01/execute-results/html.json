@@ -1,0 +1,14 @@
+{
+  "hash": "618fc6ca914e7b3157a6b7b28fd08627",
+  "result": {
+    "markdown": "---\ntitle: \"2022 - day 01\"\nauthor: \"Hendrik Wagenseil\"\nformat: html\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n\n## Data \n\nLoad and preview the data set. \n\n\n::: {.cell}\n\n```{.r .cell-code}\ny = \"2022\"\nd = \"01\"\n\nifl = file.path(\n  here::here()\n  , y\n  , \"data\"\n  , paste0(y, \"-day\", d, \"input\")\n)\n\ntxt = readLines(ifl)\nhead(txt, n = 12L)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n [1] \"4456\"  \"15332\" \"15148\" \"8795\"  \"11382\" \"\"      \"9808\"  \"8430\"  \"8486\" \n[10] \"18918\" \"\"      \"57935\"\n```\n:::\n:::\n\n\n## Part I\n\nAggregate the calories per elv and get the maximum.\n\n::: {.panel-tabset}\n\n#### R \n\nApproach:  \n\n\n::: {.cell}\n\n:::\n\n\n#### Python \n\nApproach:  \n\n\n\n::: {.cell}\n\n:::\n\n\n:::\n\n\n## Part II\n\n\n::: {.panel-tabset}\n\n#### R \n\nApproach:  \n\n\n\n::: {.cell}\n\n:::\n\n\n#### Python \n\n\n::: {.cell}\n\n:::\n\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -53,28 +53,28 @@
     "href": "2022/qmd/2022-day01.html",
     "title": "2022 - day 01",
     "section": "",
-    "text": "Load and preview the data set.\n\ny = \"2022\"\nd = \"01\"\n\nifl = file.path(\n  here::here()\n  , y\n  , \"data\"\n  , paste0(y, \"-day\", d, \"input\")\n)\n\ntxt = readLines(ifl)\nhead(txt, n = 12L)\n\n [1] \"4456\"  \"15332\" \"15148\" \"8795\"  \"11382\" \"\"      \"9808\"  \"8430\"  \"8486\" \n[10] \"18918\" \"\"      \"57935\""
+    "text": "Load and preview the data set.\n\ny = \"2022\"\nd = \"01\"\n\nifl = file.path(\n  here::here()\n  , y\n  , \"data\"\n  , paste0(y, \"-day\", d, \"input\")\n)\n\ntxt = readLines(ifl)\nhead(txt, n = 30L)\n\n [1] \"4456\"  \"15332\" \"15148\" \"8795\"  \"11382\" \"\"      \"9808\"  \"8430\"  \"8486\" \n[10] \"18918\" \"\"      \"57935\" \"\"      \"1604\"  \"3015\"  \"4529\"  \"4862\"  \"1822\" \n[19] \"4297\"  \"2568\"  \"3263\"  \"3011\"  \"2127\"  \"5186\"  \"1947\"  \"5816\"  \"4255\" \n[28] \"4041\"  \"\"      \"35216\""
   },
   {
     "objectID": "2022/qmd/2022-day01.html#data",
     "href": "2022/qmd/2022-day01.html#data",
     "title": "2022 - day 01",
     "section": "",
-    "text": "Load and preview the data set.\n\ny = \"2022\"\nd = \"01\"\n\nifl = file.path(\n  here::here()\n  , y\n  , \"data\"\n  , paste0(y, \"-day\", d, \"input\")\n)\n\ntxt = readLines(ifl)\nhead(txt, n = 12L)\n\n [1] \"4456\"  \"15332\" \"15148\" \"8795\"  \"11382\" \"\"      \"9808\"  \"8430\"  \"8486\" \n[10] \"18918\" \"\"      \"57935\""
+    "text": "Load and preview the data set.\n\ny = \"2022\"\nd = \"01\"\n\nifl = file.path(\n  here::here()\n  , y\n  , \"data\"\n  , paste0(y, \"-day\", d, \"input\")\n)\n\ntxt = readLines(ifl)\nhead(txt, n = 30L)\n\n [1] \"4456\"  \"15332\" \"15148\" \"8795\"  \"11382\" \"\"      \"9808\"  \"8430\"  \"8486\" \n[10] \"18918\" \"\"      \"57935\" \"\"      \"1604\"  \"3015\"  \"4529\"  \"4862\"  \"1822\" \n[19] \"4297\"  \"2568\"  \"3263\"  \"3011\"  \"2127\"  \"5186\"  \"1947\"  \"5816\"  \"4255\" \n[28] \"4041\"  \"\"      \"35216\""
   },
   {
     "objectID": "2022/qmd/2022-day01.html#part-i",
     "href": "2022/qmd/2022-day01.html#part-i",
     "title": "2022 - day 01",
     "section": "Part I",
-    "text": "Part I\nAggregate the calories per elv and get the maximum.\n\nRPython\n\n\nApproach:\n\n\nApproach:"
+    "text": "Part I\nAggregate the calories per elf and get the maximum number of calories per elf.\n\nRPython\n\n\nApproach:\n\ncreate a vector of indices for the empty string\ncreate vector of start and end indices of each elf\ncreate list cal with subsets per elf\nconvert all strings per element of cal to integer and sum up\nget the maximum\n\n\nempty = which(txt == \"\")\nfrom = c(1L, empty + 1L)\nto = c(empty - 1L, length(txt))\n\ncal = mapply(\n  \\(f, t) txt[f:t]\n  , f = from\n  , t = to\n) |&gt; \n  lapply(as.integer) |&gt; \n  lapply(sum) |&gt; \n  unlist() \n\nmax(cal)\n\n[1] 72478\n\n\n\n\nApproach:\n\ncreate an empty list elf\ncreate an integer cal which defaults to 0\nloop over the string list\n\nif \\(i\\)th element is not an empty string, add the value to cal\nif \\(i\\)th element is an empty string, append cal to elf and reset cal\n\nget the maximum of the result\n\n\ntxt = r.txt\n\nelf = []\ncal = 0\n\nfor i in range(len(txt)):\n  if txt[i] != '':\n    cal = cal + int(txt[i])\n  else:\n    elf.append(cal)\n    cal = 0\n\nmax(elf)\n\n72478"
   },
   {
     "objectID": "2022/qmd/2022-day01.html#part-ii",
     "href": "2022/qmd/2022-day01.html#part-ii",
     "title": "2022 - day 01",
     "section": "Part II",
-    "text": "Part II\n\nRPython\n\n\nApproach:"
+    "text": "Part II\n\nRPython\n\n\nApproach:\n\nsort vector cal in decreasing order\nselect first three elements and sum up\n\n\ncal = cal[order(cal, decreasing = TRUE)]\nsum(cal[1:3])\n\n[1] 210367\n\n\n\n\n\nelf.sort(reverse = True)\nsum(elf[0:3])\n\n210367"
   },
   {
     "objectID": "2023/qmd/2023-day01.html",

@@ -28,5 +28,6 @@ website:
       - section: "2020"
       - section: "2021"
       - section: "2022"
+        contents: 2022/qmd/*
       - section: "2023"
         contents: 2023/qmd/*

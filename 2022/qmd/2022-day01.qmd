@@ -41,12 +41,12 @@ ifl = file.path(
 )
 
 txt = readLines(ifl)
-head(txt, n = 12L)
+head(txt, n = 30L)
 ```
 
 ## Part I
 
-Aggregate the calories per elv and get the maximum.
+Aggregate the calories per elf and get the maximum number of calories per elf.
 
 ::: {.panel-tabset}
 
@@ -54,17 +54,54 @@ Aggregate the calories per elv and get the maximum.
 
 Approach:  
 
-```{r}
+* create a vector of indices for the empty string
+* create vector of start and end indices of each elf
+* create list `cal` with subsets per elf
+* convert all strings per element of `cal` to integer and sum up 
+* get the maximum
 
+```{r}
+empty = which(txt == "")
+from = c(1L, empty + 1L)
+to = c(empty - 1L, length(txt))
+
+cal = mapply(
+  \(f, t) txt[f:t]
+  , f = from
+  , t = to
+) |> 
+  lapply(as.integer) |> 
+  lapply(sum) |> 
+  unlist() 
+
+max(cal)
 ```
 
 #### Python 
 
 Approach:  
 
+* create an empty list `elf` 
+* create an integer `cal` which defaults to 0
+* loop over the string list
+  * if $i$th element is not an empty string, add the value to `cal`
+  * if $i$th element is an empty string, append `cal` to `elf` and reset `cal` 
+* get the maximum of the result
 
 ```{python}
+txt = r.txt
 
+elf = []
+cal = 0
+
+for i in range(len(txt)):
+  if txt[i] != '':
+    cal = cal + int(txt[i])
+  else:
+    elf.append(cal)
+    cal = 0
+
+max(elf)
 ```
 
 :::
@@ -79,16 +116,19 @@ Approach:
 
 Approach:  
 
+* sort vector `cal` in decreasing order
+* select first three elements and sum up
 
 ```{r}
-
+cal = cal[order(cal, decreasing = TRUE)]
+sum(cal[1:3])
 ```
 
 #### Python 
 
 ```{python}
-
-
+elf.sort(reverse = True)
+sum(elf[0:3])
 ```
 
 :::

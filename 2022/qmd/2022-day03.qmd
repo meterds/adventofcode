@@ -89,9 +89,24 @@ sum(score)
 
 Approach:  
 
+* split strings into first (`c1`) and second half (`c2`)
+* intersect first and half pairwise
+* get unicode code point for uppercase and lowercase letters, use a 
+different offset to get correct scores
+* calculate sum
 
 ```{python}
+c1 = [i[:int(len(i)/2)] for i in r.txt]
+c2 = [i[int(len(i)/2):] for i in r.txt]
 
+items = []
+for i1, i2 in zip(c1, c2):
+  i = set(i1) & set(i2)
+  items.append(list(i)[0])
+
+l = [ord(i) - 96 for i in items if i.islower()]
+u = [ord(i) - 65 + 27 for i in items if i.isupper()]
+sum(l + u)
 ```
 
 :::

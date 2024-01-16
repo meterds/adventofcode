@@ -8,7 +8,7 @@
 
 <meta name="author" content="Hendrik Wagenseil">
 
-<title>Advent of code - 2022 - day 02</title>
+<title>Advent of code - 2022 - day 03</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2022/qmd/2022-day01.html">2022</a></li><li class="breadcrumb-item"><a href="../../2022/qmd/2022-day02.html">2022 - day 02</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../2022/qmd/2022-day01.html">2022</a></li><li class="breadcrumb-item"><a href="../../2022/qmd/2022-day03.html">2022 - day 03</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -159,13 +159,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2022/qmd/2022-day02.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../2022/qmd/2022-day02.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2022 - day 02</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2022/qmd/2022-day03.html" class="sidebar-item-text sidebar-link">
+  <a href="../../2022/qmd/2022-day03.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">2022 - day 03</span></a>
   </div>
 </li>
@@ -235,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2022 - day 02</h1>
+<h1 class="title">2022 - day 03</h1>
 </div>
 
 
@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Load and preview the data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="st">"2022"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="st">"02"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="st">"03"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ifl <span class="ot">=</span> <span class="fu">file.path</span>(</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>()</span>
@@ -271,142 +271,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">=</span> <span class="fu">readLines</span>(ifl)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(txt, <span class="at">n =</span> 30L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(txt, <span class="at">n =</span> 20L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "C Z" "A Y" "C Z" "A Y" "C Y" "A Z" "B Y" "C X" "A Y" "B X" "B X" "A Y"
-[13] "C Z" "C Y" "C Y" "A Y" "C Y" "B X" "B X" "A Z" "C Y" "B Z" "C Z" "A Z"
-[25] "B Y" "A Y" "C Z" "A Z" "A Y" "C Z"</code></pre>
+<pre><code> [1] "PnJJfVPBcfVnnPnBFFcggttrtgCrjDtSjzSS"            
+ [2] "llWlLbmmdLLwLbqGdmTmbZfCQtzrMQfrjSzrtSrMqgMt"    
+ [3] "sHlZTsWZwGGlZmGTmdlZbhJNRPphVfRvVnRBsRsJJV"      
+ [4] "fsHtVbjtqstBghhwwPBw"                            
+ [5] "SDQzzSzQrQMmmQlmlcNcJLZPgLrVZTdCddhgdPwwCw"      
+ [6] "JmSWSVGGlJJbRsbpWHfbRj"                          
+ [7] "tJndRtwtddPvllvfrldrfPpHWDgglFDWWmMmHWmHpZlS"    
+ [8] "BBJTTjCsJWZCmSHSZD"                              
+ [9] "LhqLcVzshTNjhqhcjLLTLjbTnGndfdwrfPRVRrdnwftQwJRv"
+[10] "wHlPJZwbbZfqbFwqFZfrrcrJrtMWSMMVtVcJht"          
+[11] "NzzzNBjNfLzvGfDNjMhVhrrMShLchsRVLs"              
+[12] "DDdmmgBGDNdgfgZggnZbZHln"                        
+[13] "jqNjZJqsGsRqJJqnlJJGzMzffcffTCfQcFmvcWfvTNfcvv"  
+[14] "PdhVdrwphhVtDdSPLmFCWTLFWWTfFQQr"                
+[15] "dSPwbbVdbpQllZMQbMjM"                            
+[16] "QQdfflqvjTvfZqLMWfNDGhwsCNGGGM"                  
+[17] "rzRRRTVTPTNhsDWDRhGC"                            
+[18] "gHSTpTnppvjQgJjcql"                              
+[19] "nzNvsFBBBFsNrnNBrvndfThwDbhVPzVVwhZZChpZPCbZ"    
+[20] "GMQQStmcHHmlfMtPwbZVVVVhhPhbVc"                  </code></pre>
 </div>
 </div>
 </section>
 <section id="part-i" class="level2">
 <h2 class="anchored" data-anchor-id="part-i">Part I</h2>
-<p>Get the score of the rock paper scissors game.</p>
-<ul>
-<li>A = rock, B = paper, C = scissors</li>
-<li>X = rock, Y = paper, Z = scissors</li>
-</ul>
+<p>Find items (letters) occuring in the first and second half of a string, rank by position in the alphabet (1-26 for lowercase letters, 27-52 for uppercase letters) and calculate the sum.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>Approach:</p>
 <ul>
-<li>define a named vector <code>pts</code> with all possible combinations and the resulting score</li>
-<li>match <code>txt</code> with <code>pts</code> to get the score for all games and sum up</li>
+<li>split strings into first (<code>c1</code>) and second half (<code>c2</code>)</li>
+<li>split each half into single letters</li>
+<li>intersect first and half pairwise</li>
+<li>match with alphabet and calculate sum</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pts <span class="ot">=</span> <span class="fu">c</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"A X"</span> <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">3</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"A Y"</span> <span class="ot">=</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">6</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"A Z"</span> <span class="ot">=</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">0</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"B X"</span> <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">0</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"B Y"</span> <span class="ot">=</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"B Z"</span> <span class="ot">=</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">6</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"C X"</span> <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">6</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"C Y"</span> <span class="ot">=</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">0</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"C Z"</span> <span class="ot">=</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">3</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>score <span class="ot">=</span> pts[<span class="fu">match</span>(txt, <span class="at">table =</span> <span class="fu">names</span>(pts))]</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>len <span class="ot">=</span> <span class="fu">nchar</span>(txt) </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">=</span> <span class="fu">substr</span>(txt, <span class="at">start =</span> 1L, <span class="at">stop =</span> len <span class="sc">/</span> 2L)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">=</span> <span class="fu">substr</span>(txt, <span class="at">start =</span> len <span class="sc">/</span> 2L <span class="sc">+</span> 1L, <span class="at">stop =</span> len)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">=</span> <span class="fu">strsplit</span>(c1, <span class="at">split =</span> <span class="st">""</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">=</span> <span class="fu">strsplit</span>(c2, <span class="at">split =</span> <span class="st">""</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>items <span class="ot">=</span> <span class="fu">Map</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  intersect</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  , <span class="at">x =</span> c1</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  , <span class="at">y =</span> c2</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>() </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>score <span class="ot">=</span> <span class="fu">match</span>(</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  items</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  , <span class="at">table =</span> <span class="fu">c</span>(letters, LETTERS)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 12586</code></pre>
+<pre><code>[1] 7875</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>Approach:</p>
-<ul>
-<li>define dictionary <code>pts</code> with all possible combinations and the resulting score</li>
-<li>use list comprehension to get the score per game and sum up</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> r.txt</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> {</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'A X'</span>: <span class="dv">1</span> <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'A Y'</span>: <span class="dv">2</span> <span class="op">+</span> <span class="dv">6</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'A Z'</span>: <span class="dv">3</span> <span class="op">+</span> <span class="dv">0</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'B X'</span>: <span class="dv">1</span> <span class="op">+</span> <span class="dv">0</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'B Y'</span>: <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'B Z'</span>: <span class="dv">3</span> <span class="op">+</span> <span class="dv">6</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'C X'</span>: <span class="dv">1</span> <span class="op">+</span> <span class="dv">6</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'C Y'</span>: <span class="dv">2</span> <span class="op">+</span> <span class="dv">0</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'C Z'</span>: <span class="dv">3</span> <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> [pts[i] <span class="cf">for</span> i <span class="kw">in</span> txt]</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>12586</code></pre>
-</div>
-</div>
 </div>
 </div>
 </div>
 </section>
 <section id="part-ii" class="level2">
 <h2 class="anchored" data-anchor-id="part-ii">Part II</h2>
-<p>Get the score of the rock paper scissors game.</p>
-<ul>
-<li>A = rock, B = paper, C = scissors</li>
-<li>X = loose, Y = draw, Z = win</li>
-</ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>Approach:</p>
 <ul>
-<li>same as in part I, just re-define vector <code>pts</code></li>
+<li>arrange rucksacks in groups of 3</li>
+<li>per group, unify items per rucksack and then calculate group frequency</li>
+<li>identify item with frequency of 3</li>
+<li>match with alphabet and calculate sum</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pts <span class="ot">=</span> <span class="fu">c</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"A X"</span> <span class="ot">=</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">0</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"A Y"</span> <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">3</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"A Z"</span> <span class="ot">=</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">6</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"B X"</span> <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">0</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"B Y"</span> <span class="ot">=</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"B Z"</span> <span class="ot">=</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">6</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"C X"</span> <span class="ot">=</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">0</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"C Y"</span> <span class="ot">=</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">3</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  , <span class="st">"C Z"</span> <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">6</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>score <span class="ot">=</span> pts[<span class="fu">match</span>(txt, <span class="at">table =</span> <span class="fu">names</span>(pts))]</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>from <span class="ot">=</span> <span class="fu">seq.int</span>(1L, <span class="at">to =</span> <span class="fu">length</span>(txt), <span class="at">by =</span> 3L)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>to <span class="ot">=</span> <span class="fu">seq.int</span>(3L, <span class="at">to =</span> <span class="fu">length</span>(txt), <span class="at">by =</span> 3L)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>grp <span class="ot">=</span> <span class="fu">mapply</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  \(f, t) txt[f<span class="sc">:</span>t]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  , <span class="at">f =</span> from</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  , <span class="at">t =</span> to</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  , <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>stick <span class="ot">=</span> <span class="fu">lapply</span>(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  grp</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  , <span class="at">FUN =</span> \(g){</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    s <span class="ot">=</span> <span class="fu">strsplit</span>(g, <span class="at">split =</span> <span class="st">""</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">lapply</span>(<span class="at">FUN =</span> unique) <span class="sc">|&gt;</span> </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unlist</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">table</span>()</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(s)[<span class="fu">which</span>(s <span class="sc">==</span> <span class="dv">3</span>)]</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>score <span class="ot">=</span> <span class="fu">match</span>(</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  stick</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  , <span class="at">table =</span> <span class="fu">c</span>(letters, LETTERS)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 13193</code></pre>
+<pre><code>[1] 2479</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Approach:</p>
-<ul>
-<li>same as in part I, just re-define dictionary <code>pts</code></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> r.txt</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> {</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'A X'</span>: <span class="dv">3</span> <span class="op">+</span> <span class="dv">0</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'A Y'</span>: <span class="dv">1</span> <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'A Z'</span>: <span class="dv">2</span> <span class="op">+</span> <span class="dv">6</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'B X'</span>: <span class="dv">1</span> <span class="op">+</span> <span class="dv">0</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'B Y'</span>: <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'B Z'</span>: <span class="dv">3</span> <span class="op">+</span> <span class="dv">6</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'C X'</span>: <span class="dv">2</span> <span class="op">+</span> <span class="dv">0</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'C Y'</span>: <span class="dv">3</span> <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  , <span class="st">'C Z'</span>: <span class="dv">1</span> <span class="op">+</span> <span class="dv">6</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> [pts[i] <span class="cf">for</span> i <span class="kw">in</span> txt]</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>13193</code></pre>
-</div>
-</div>
 </div>
 </div>
 </div>

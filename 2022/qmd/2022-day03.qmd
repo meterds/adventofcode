@@ -1,0 +1,154 @@
+---
+title: "2022 - day 03"
+author: "Hendrik Wagenseil"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(reticulate)
+use_virtualenv(
+  file.path(
+    here::here()
+    , ".venv"
+  )
+)
+
+knitr::opts_knit$set(
+  root.dir = '~/Documents/repos/github/adventofcode'
+)
+```
+
+## Data 
+
+Load and preview the data set. 
+
+```{r}
+#| label: data-load
+
+y = "2022"
+d = "03"
+
+ifl = file.path(
+  here::here()
+  , y
+  , "data"
+  , paste0(y, "-day", d, "input")
+)
+
+txt = readLines(ifl)
+head(txt, n = 20L)
+```
+
+## Part I
+
+Find items (letters) occuring in the first and second half of a string, rank by 
+position in the alphabet (1-26 for lowercase letters, 27-52 for uppercase 
+letters) and calculate the sum.
+
+::: {.panel-tabset}
+
+#### R 
+
+Approach:  
+
+* split strings into first (`c1`) and second half (`c2`)
+* split each half into single letters
+* intersect first and half pairwise
+* match with alphabet and calculate sum
+
+```{r}
+len = nchar(txt) 
+
+c1 = substr(txt, start = 1L, stop = len / 2L)
+c2 = substr(txt, start = len / 2L + 1L, stop = len)
+
+c1 = strsplit(c1, split = "")
+c2 = strsplit(c2, split = "")
+
+items = Map(
+  intersect
+  , x = c1
+  , y = c2
+) |> 
+  unlist() 
+
+score = match(
+  items
+  , table = c(letters, LETTERS)
+)
+
+sum(score)
+```
+
+#### Python 
+
+Approach:  
+
+
+```{python}
+
+```
+
+:::
+
+
+## Part II
+
+::: {.panel-tabset}
+
+#### R 
+
+Approach:  
+
+* arrange rucksacks in groups of 3
+* per group, unify items per rucksack and then calculate group frequency
+* identify item with frequency of 3
+* match with alphabet and calculate sum
+
+```{r}
+from = seq.int(1L, to = length(txt), by = 3L)
+to = seq.int(3L, to = length(txt), by = 3L)
+
+grp = mapply(
+  \(f, t) txt[f:t]
+  , f = from
+  , t = to
+  , SIMPLIFY = FALSE
+)
+
+stick = lapply(
+  grp
+  , FUN = \(g){
+    s = strsplit(g, split = "") |> 
+      lapply(FUN = unique) |> 
+      unlist() |> 
+      table()
+    names(s)[which(s == 3)]
+  }
+) |> 
+  unlist()
+
+score = match(
+  stick
+  , table = c(letters, LETTERS)
+)
+
+sum(score)
+
+```
+
+#### Python 
+
+Approach:  
+
+
+```{python}
+
+```
+
+:::

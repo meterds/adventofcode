@@ -82,6 +82,9 @@ sum(score)
 
 Approach:  
 
+* define dictionary `pts` with all possible combinations and the 
+resulting score
+* use list comprehension to get the score per game and sum up
 
 ```{python}
 txt = r.txt
@@ -141,7 +144,7 @@ sum(score)
 
 Approach:  
 
-* same as in part I, just re-define vector `pts` 
+* same as in part I, just re-define dictionary `pts` 
 
 ```{python}
 txt = r.txt
